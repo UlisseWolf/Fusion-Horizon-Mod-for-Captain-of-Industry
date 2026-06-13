@@ -1,4 +1,4 @@
-# Fusion Horizon (Mod for Captain of Industry)-
+# Fusion Horizon (Mod for Captain of Industry)
 
 **Fusion Horizon** is a mod that introduces new mechanics related to the nuclear industry, extending all the way to nuclear fusion and the use of plasma in other industrial processes. The mod is based primarily on existing technologies or those currently under development, although it does contain some science-fiction elements.
 
