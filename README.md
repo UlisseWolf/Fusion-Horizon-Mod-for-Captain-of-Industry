@@ -75,3 +75,4 @@ In short: this Work may be freely used, modified, and shared within the Captain 
 
 - **Ulisse Wolf** — original CustomAssets/Python mod and DLL conversion.
 - Built against the [Captain-of-industry-modding](https://github.com/MaFi-Games/Captain-of-industry-modding) template, in the style of **CoI.MetallurgyPlus**.
+- This mod was developed with Claude's support under the supervision of a human operator.
