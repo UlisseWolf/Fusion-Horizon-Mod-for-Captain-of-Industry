@@ -27,7 +27,7 @@ A mod for [**Captain of Industry**](https://store.steampowered.com/app/1594320/C
 
 ### Everything else
 - New custom machines (Heat Exchanger, Tritium Separator) alongside recipes bound to several existing vanilla machines (Nuclear Reprocessing Plant, Chemical Plant II, Assembly Plant) rather than inventing redundant buildings.
-- Full localization: **English, Italian, French, Spanish, German, Portuguese.**
+- Full localization: **English, Italian, French, Spanish, German, Portuguese, Russian.**
 
 ## Installation
 
@@ -56,7 +56,7 @@ By default the project builds straight into your local Mods folder (`%APPDATA%\C
 │       ├── Source/           — mod logic (products, recipes, research, machines)
 │       ├── Assets/           — source textures/models feeding the Unity companion project
 │       ├── AssetBundles/     — compiled Unity AssetBundles referenced by the mod
-│       └── Translations/     — en / it / fr / es / de / pt JSON translation files
+│       └── Translations/     — en / it / fr / es / de / pt / ru JSON translation files
 └── old/
     └── Fusion_Horizon/       — legacy CustomAssets/Python version, kept for reference
 ```
@@ -64,6 +64,8 @@ By default the project builds straight into your local Mods folder (`%APPDATA%\C
 ## Localization
 
 Translation files live under `src/FusionHorizonDLL/Translations/<lang>.json`, keyed by a stable `<category>.<protoId>.<field>` convention (e.g. `research.Research_Isotope_Separation.name`) rather than by the English source text, so editing English copy later never silently breaks a translation lookup. Contributions for additional languages are welcome — just mirror the key set in `en.json`.
+
+- Russian translation by [**Hoochie6**](https://github.com/Hoochie63).
 
 ## License
 
@@ -74,5 +76,6 @@ In short: this Work may be freely used, modified, and shared within the Captain 
 ## Credits
 
 - **Ulisse Wolf** — original CustomAssets/Python mod and DLL conversion.
+- **[Hoochie6](https://github.com/Hoochie63)** — Russian translation.
 - Built against the [Captain-of-industry-modding](https://github.com/MaFi-Games/Captain-of-industry-modding) template, in the style of **CoI.MetallurgyPlus**.
 - This mod was developed with Claude's support under the supervision of a human operator.
