@@ -34,14 +34,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- PNG icons are plain Content, like Metallurgy+ does for its custom icons. -->
-    <Content Include="Assets\**" CopyToOutputDirectory="PreserveNewest" />
+    <!-- Assets\ holds raw source textures/models for the Unity companion project — not
+         needed at runtime (only the compiled AssetBundles below are), so it's intentionally
+         excluded from both the build output and the deployed mod folder. -->
     <Content Include="Translations\**" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="manifest.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="Thumbnail.png" CopyToOutputDirectory="PreserveNewest" Condition="Exists('Thumbnail.png')" />
   </ItemGroup>
 
-  <!-- AssetBundles built from the Unity companion project (see README_CONVERSIONE.md), if any
+  <!-- AssetBundles built from the Unity companion project (see README.md), if any
        have been built yet. Collected as their own item group (not plain <Content>) because
        DeployToModsFolder below copies them to a dedicated AssetBundles subfolder, same as
        ExampleMod.csproj/Metallurgy+ do. -->
@@ -85,11 +86,6 @@
     <Copy SourceFiles="$(ProjectDir)Thumbnail.png" DestinationFolder="$(COI_MODS)\$(TargetName)\" Condition="Exists('$(ProjectDir)Thumbnail.png')" />
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(COI_MODS)\$(TargetName)\" />
     <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(COI_MODS)\$(TargetName)\" Condition="'$(Configuration)' == 'Debug' AND Exists('$(TargetDir)$(TargetName).pdb')" />
-    <ItemGroup>
-      <_DeployedAssets Include="$(ProjectDir)Assets\**\*" />
-      <_DeployedAssetsDest Include="@(_DeployedAssets->Replace('$(ProjectDir)Assets\', '$(COI_MODS)\$(TargetName)\Assets\'))" />
-    </ItemGroup>
-    <Copy SourceFiles="@(_DeployedAssets)" DestinationFiles="@(_DeployedAssetsDest)" SkipUnchangedFiles="true" Condition="Exists('$(ProjectDir)Assets')" />
     <ItemGroup>
       <_DeployedTranslations Include="$(ProjectDir)Translations\**\*" />
       <_DeployedTranslationsDest Include="@(_DeployedTranslations->Replace('$(ProjectDir)Translations\', '$(COI_MODS)\$(TargetName)\Translations\'))" />
