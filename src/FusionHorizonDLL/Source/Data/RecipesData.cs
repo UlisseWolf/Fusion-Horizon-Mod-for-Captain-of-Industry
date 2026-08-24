@@ -356,8 +356,9 @@ internal class RecipesData : IModData {
 			.BindTo(M("SmokeStack"), 30.Seconds());
 
 		// ------------------------------------------------------------------
-		// Misc recipes (hook into the vanilla "ResearchSugarCane" node — see the TODO
-		// in ResearchData.cs)
+		// Misc recipes, gated by the "Organic Pesticides" research node (see
+		// ResearchData.cs) — parented to both vanilla "Sugar Cane" and RecipesPP's
+		// "Advanced Farming".
 		// ------------------------------------------------------------------
 
 		registrator.RecipeProtoBuilder

@@ -35,6 +35,13 @@ internal class ResearchData : IModData {
 		ResearchNodeProto vanillaNuclearReactor2 = protosDb.GetOrThrow<ResearchNodeProto>(Ids.Research.NuclearReactor2);
 		ResearchNodeProto vanillaFastBreederReactor = protosDb.GetOrThrow<ResearchNodeProto>(Ids.Research.NuclearReactor3);
 		ResearchNodeProto vanillaMedicalSupplies3 = protosDb.GetOrThrow<ResearchNodeProto>(Ids.Research.MedicalSupplies3);
+		ResearchNodeProto vanillaSugarCane = protosDb.GetOrThrow<ResearchNodeProto>(Ids.Research.SugarCane);
+		// RecipesPP is an external mod dependency (see manifest.json); its research node
+		// IDs aren't exposed as compile-time constants, so this is built from the
+		// literal string used in its own source (BioProcessorData.AdvancedFarmingResearchId).
+		ResearchNodeProto recipesPlusPlusAdvancedFarming = protosDb.GetOrThrow<ResearchNodeProto>(
+			new ResearchNodeProto.ID("RecipesPP_AdvancedFarming"));
+		ProductProto.ID vanillaPesticideId = new("Product_Pesticide");
 
 		// ------------------------------------------------------------------------
 		ResearchNodeProto canduReactor = registrator.ResearchNodeProtoBuilder
@@ -213,12 +220,32 @@ internal class ResearchData : IModData {
 		ProductProto medicalSupplies4Proto = protosDb.GetOrThrow<ProductProto>(ModIDs.Products.MedicalSupplies4);
 		medicalSupplies4Proto.AddParam(new MedicalSuppliesParam(1.25.Upoints(), 30.Percent(), 1.9.Percent()));
 
-		// TODO: hook Recipe_Bioethanol / Recipe_Organic_pesticide onto the EXISTING
-		// vanilla research node "ResearchSugarCane" instead of leaving them unlocked
-		// from the start. ResearchNodeProtoBuilderExtensions' Add*ToUnlock methods are
-		// extension methods on ResearchNodeProtoBuilder.State, usable only inside a
-		// .Start(...)...BuildAndAdd() chain for a NEW node — there's no equivalent for
-		// appending unlocks to an already-registered node. Options: reflection on the
-		// private backing field, or simply leave these two unlocked from the start.
+		// ------------------------------------------------------------------------
+		// Two parents from two different mods: vanilla "Sugar Cane" and RecipesPP's
+		// "Advanced Farming" (an external mod dependency, not this mod's own node).
+		// Unlocks both of this mod's Sugar-Cane-adjacent recipes (Organic Pesticide and
+		// Bioethanol).
+		//
+		// Vanilla "Medical supplies II" is itself parented to Sugar Cane (cost 96 each),
+		// making this node a sibling rather than an ancestor of it in the dependency
+		// graph; cost (60) and grid position (between Sugar Cane at (116,41) and Medical
+		// supplies II at (132,43)) are what make it unlock first in practice.
+		registrator.ResearchNodeProtoBuilder
+			.Start(
+				ModTranslation.Get("research.Research_Organic_Pesticide.name", "Organic Pesticides"),
+				ModIDs.Research.OrganicPesticide, costMonths: 60)
+			.Description(ModTranslation.Get("research.Research_Organic_Pesticide.description",
+				"Organic pesticides are pest control products derived from natural ingredients of " +
+				"botanical, microbial, or mineral origin. Although they are chemical compounds, " +
+				"they are derived from natural sources and tend to break down more quickly in the " +
+				"environment than synthetic pesticides, making them generally less persistent and " +
+				"less harmful to ecosystems and human health."))
+			.SetGridPosition(new Vector2i(124, 41))
+			.AddParents(vanillaSugarCane, recipesPlusPlusAdvancedFarming)
+			.AddProductIcon(vanillaPesticideId)
+			.AddProductToUnlock(vanillaPesticideId)
+			.AddRecipeToUnlock(ModIDs.Recipes.OrganicPesticide)
+			.AddRecipeToUnlock(ModIDs.Recipes.Bioethanol)
+			.BuildAndAdd();
 	}
 }

@@ -82,5 +82,7 @@
   "research.Research_Isotope_Separation.name": "Isotope Separation",
   "research.Research_Isotope_Separation.description": "Separates fission platinum-group metals and sealed Cs-137/Sr-90 sources out of Fission Products, yielding stable, reusable Industrial Isotopes. Most of the processed material remains Depleted Fission Products, still requiring radioactive waste storage, but for somewhat less time than untreated Fission Products.",
   "research.Research_Medical_Supplies_4.name": "Medical Supplies IV",
-  "research.Research_Medical_Supplies_4.description": "Combines Industrial Isotopes for nuclear medicine with Plasma Modules for advanced plasma-based medical equipment, unlocking Medical Supplies IV — the most advanced tier of healthcare, provided directly to Clinics."
+  "research.Research_Medical_Supplies_4.description": "Combines Industrial Isotopes for nuclear medicine with Plasma Modules for advanced plasma-based medical equipment, unlocking Medical Supplies IV — the most advanced tier of healthcare, provided directly to Clinics.",
+  "research.Research_Organic_Pesticide.name": "Organic Pesticides",
+  "research.Research_Organic_Pesticide.description": "Organic pesticides are pest control products derived from natural ingredients of botanical, microbial, or mineral origin. Although they are chemical compounds, they are derived from natural sources and tend to break down more quickly in the environment than synthetic pesticides, making them generally less persistent and less harmful to ecosystems and human health."
 }

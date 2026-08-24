@@ -16,6 +16,7 @@ public static partial class ModIDs {
 		public static readonly ResNodeID PlasmaIncinerator = new("Research_Plasma_Inceneritor");
 		public static readonly ResNodeID IsotopeSeparation = new("Research_Isotope_Separation");
 		public static readonly ResNodeID MedicalSupplies4  = new("Research_Medical_Supplies_4");
+		public static readonly ResNodeID OrganicPesticide  = new("Research_Organic_Pesticide");
 
 	}
 

@@ -82,5 +82,7 @@
   "research.Research_Isotope_Separation.name": "Separação de Isótopos",
   "research.Research_Isotope_Separation.description": "Separa metais nobres de fissão e fontes seladas de Cs-137/Sr-90 dos Produtos de Fissão, produzindo Isótopos Industriais estáveis e reutilizáveis. A maior parte do material processado permanece como Produtos de Fissão Empobrecidos, ainda exigindo depósito de resíduos radioativos, mas por um tempo um pouco menor do que os Produtos de Fissão não tratados.",
   "research.Research_Medical_Supplies_4.name": "Suprimentos Médicos IV",
-  "research.Research_Medical_Supplies_4.description": "Combina Isótopos Industriais para medicina nuclear com Módulos de Plasma para equipamentos médicos avançados baseados em plasma, desbloqueando os Suprimentos Médicos IV — o nível mais avançado de assistência à saúde, fornecido diretamente às Clínicas."
+  "research.Research_Medical_Supplies_4.description": "Combina Isótopos Industriais para medicina nuclear com Módulos de Plasma para equipamentos médicos avançados baseados em plasma, desbloqueando os Suprimentos Médicos IV — o nível mais avançado de assistência à saúde, fornecido diretamente às Clínicas.",
+  "research.Research_Organic_Pesticide.name": "Pesticidas Orgânicos",
+  "research.Research_Organic_Pesticide.description": "Os pesticidas orgânicos são produtos de controle de pragas derivados de ingredientes naturais de origem botânica, microbiana ou mineral. Embora sejam compostos químicos, são derivados de fontes naturais e tendem a se decompor mais rapidamente no ambiente do que os pesticidas sintéticos, tornando-os geralmente menos persistentes e menos prejudiciais aos ecossistemas e à saúde humana."
 }
