@@ -55,6 +55,7 @@ By default the project builds straight into your local Mods folder (`%APPDATA%\C
 │   └── FusionHorizonDLL/     — active C# DLL mod (this is what you build/ship)
 │       ├── Source/           — mod logic (products, recipes, research, machines)
 │       ├── Assets/           — source textures/models feeding the Unity companion project
+│       │                       (excluded from the build output — not needed at runtime)
 │       ├── AssetBundles/     — compiled Unity AssetBundles referenced by the mod
 │       └── Translations/     — en / it / fr / es / de / pt / ru JSON translation files
 └── old/
