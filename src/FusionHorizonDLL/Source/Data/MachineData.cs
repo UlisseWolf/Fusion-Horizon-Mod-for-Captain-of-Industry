@@ -279,17 +279,18 @@ internal class MachineData : IModData {
 		// (X/Y) and coolant loop (W) alike — outputs the tritium-rich variant, requiring
 		// the Tritium Separator to recover usable Heavy Water and Tritium from it.
 		//
-		// Power tuning: 240 MW target hit via qty(32) x level(4) x 1.875 (the constant
-		// derived from T1: 16x3=90MW and T2: 16x4=120MW). maxPowerLevel is kept equal to
-		// T2's own (4) rather than raised further, because the runtime reactor heat model
-		// (Mafi.Core.Factory.NuclearReactors.NuclearReactor) generates heat purely as a
-		// function of CurrentPowerLevel (100 heat/tick per level), while heat dissipation
-		// capacity is tied to SteamOutPerPowerLevel's quantity, independent of power
-		// level — so raising maxPowerLevel without a matching quantity increase raises
-		// heat generation at max power without adding dissipation capacity to match,
-		// risking overheating near the top of the power range. Scaling quantity instead
-		// of level hits the same MW target with the same per-tick heat generation as
-		// T2's own max level, but with double the steam-conversion throughput to shed it.
+		// maxPowerLevel and quantity (4, 16) are kept IDENTICAL to CANDU II's own, rather
+		// than raised to justify a higher MW figure. This mirrors vanilla's own approach:
+		// the Fast Breeder Reactor advertises double Nuclear Reactor II's output (240 vs
+		// 120 MW) using the exact same maxPowerLevel/quantity (4, 16) as Nuclear Reactor
+		// II — the higher figure comes from outputting a more energy-dense fluid
+		// (Super-Pressurized Steam vs High-Pressure Steam), not from higher throughput
+		// numbers on the reactor itself. Applying the same principle here: CANDU III's
+		// output being a different fluid (tritium-rich Heavy Water) justifies the "more
+		// powerful" framing without touching the numbers that drive the reactor's own
+		// heat generation/dissipation balance (see Mafi.Core.Factory.NuclearReactors.
+		// NuclearReactor), keeping CANDU III's thermal and automatic-power-regulation
+		// behavior identical to CANDU II's own, proven-stable one.
 		NuclearReactorProto canduT3 = registrator.PrototypesDb.Add(new NuclearReactorProto(
 			id: ModIDs.Machines.CanduReactorT3,
 			strings: Proto.CreateStr(ModIDs.Machines.CanduReactorT3,
@@ -307,8 +308,8 @@ internal class MachineData : IModData {
 			maxPowerLevel: 4,
 			fuelCapacity: new Quantity(80),
 			minFuelToOperate: new Quantity(32),
-			waterInPerStep: heavyWater.WithQuantity(32),
-			steamOutPerStep: heavyWaterHighTritium.WithQuantity(32),
+			waterInPerStep: heavyWater.WithQuantity(16),
+			steamOutPerStep: heavyWaterHighTritium.WithQuantity(16),
 			waterInPorts: "AB",
 			steamOutPorts: "XY",
 			processDuration: 10.Seconds(),
