@@ -44,12 +44,11 @@ internal class MachineData : IModData {
 	private void RegisterHeatExchanger(ProtoRegistrator registrator) {
 		registrator.MachineProtoBuilder
 			.Start(
-				ModTranslation.Get("build-machine.Heat_exchanger_candu.name", "Heat Exchanger"),
+				"Heat Exchanger",
 				ModIDs.Machines.HeatExchangerCandu)
-			.Description(ModTranslation.Get("build-machine.Heat_exchanger_candu.description",
-				"A heat exchanger is a device that transfers thermal energy between two fluids " +
+			.Description("A heat exchanger is a device that transfers thermal energy between two fluids " +
 				"while keeping them separate, allowing a circuit to be heated or cooled without " +
-				"mixing the substances involved."))
+				"mixing the substances involved.")
 			.SetCategories(Ids.ToolbarCategories.Water)
 			.SetLayout(
 				"A@>[3][3][3][3][3][3][3][3][3][3][3]>@W",
@@ -69,12 +68,11 @@ internal class MachineData : IModData {
 	private void RegisterIncinerationPlantT2(ProtoRegistrator registrator) {
 		var proto = registrator.MachineProtoBuilder
 			.Start(
-				ModTranslation.Get("build-machine.Incineration_plant_T2.name", "Incineration Plant II"),
+				"Incineration Plant II",
 				ModIDs.Machines.IncinerationPlantT2)
-			.Description(ModTranslation.Get("build-machine.Incineration_plant_T2.description",
-				"It incinerates waste with far greater efficiency than a traditional burner and " +
+			.Description("It incinerates waste with far greater efficiency than a traditional burner and " +
 				"incinerator. The process has a positive energy balance and produces steam. " +
-				"Thanks to the plasma, no pollution is generated, only slag from inorganic waste."))
+				"Thanks to the plasma, no pollution is generated, only slag from inorganic waste.")
 			.SetCategories(Ids.ToolbarCategories.Waste_Solid)
 			.SetLayout(
 				"   [2][2][2][5][5][5][8][8][8][8][8][8][8][6]   ",
@@ -103,12 +101,11 @@ internal class MachineData : IModData {
 	private void RegisterTritiumSeparator(ProtoRegistrator registrator) {
 		registrator.MachineProtoBuilder
 			.Start(
-				ModTranslation.Get("build-machine.Tritium_separator.name", "Tritium Separator"),
+				"Tritium Separator",
 				ModIDs.Machines.TritiumSeparator)
-			.Description(ModTranslation.Get("build-machine.Tritium_separator.description",
-				"Separates the tritium-rich, high-pressure heavy water drawn from a CANDU 3 " +
+			.Description("Separates the tritium-rich, high-pressure heavy water drawn from a CANDU 3 " +
 				"reactor's coolant loop into pure Tritium and regular high-pressure Heavy Water, " +
-				"ready to be reused."))
+				"ready to be reused.")
 			.SetCategories(Ids.ToolbarCategories.Power_Nuclear)
 			.SetLayout(
 				"   [3][3][3][3][3][3][3][3]   ",
@@ -191,13 +188,12 @@ internal class MachineData : IModData {
 		NuclearReactorProto canduT1 = registrator.PrototypesDb.Add(new NuclearReactorProto(
 			id: ModIDs.Machines.CanduReactorT1,
 			strings: Proto.CreateStr(ModIDs.Machines.CanduReactorT1,
-				ModTranslation.Get("nuclear-reactor.Candu_Reactor_T1_build.name", "CANDU Nuclear Reactor"),
-				ModTranslation.Get("nuclear-reactor.Candu_Reactor_T1_build.description",
-					"A thermal CANDU reactor that sustains a nuclear chain reaction using enriched " +
+				"CANDU Nuclear Reactor",
+				"A thermal CANDU reactor that sustains a nuclear chain reaction using enriched " +
 					"uranium rods or natural uranium rods. The reaction releases a large amount of " +
 					"energy, which is used to generate steam. At maximum power, this plant can " +
 					"generate up to 90 MW of electricity. Warning: Spent fuel is radioactive and can " +
-					"pose a health risk to the public if not stored in a specialized facility.")),
+					"pose a health risk to the public if not stored in a specialized facility."),
 			layout: registrator.LayoutParser.ParseLayoutOrThrow(layoutParamsT1, layout),
 			costs: Costs.Buildings.NuclearReactor.MapToEntityCosts(registrator),
 			maxPowerLevel: 3,
@@ -224,7 +220,9 @@ internal class MachineData : IModData {
 			graphics: new NuclearReactorProto.Gfx(
 				prefabPath: "Assets/Base/Buildings/NuclearReactors/NuclearReactorT1.prefab",
 				categories: registrator.GetCategoriesProtos(Ids.ToolbarCategories.Power_Nuclear),
-				soundPrefabPath: "Assets/Base/Buildings/NuclearReactors/Shared/ReactorSound.prefab",
+				// Since 0.8.8 entity sounds come from the game's sound bindings table and the old
+				// ReactorSound.prefab no longer exists, so no sound prefab is passed here.
+				soundPrefabPath: default,
 				fuelIconPath: "Assets/Base/Buildings/NuclearReactors/Shared/MoxReactorFuelIcon.svg",
 				maxEmissionIntensity: 3.5f)));
 
@@ -232,11 +230,10 @@ internal class MachineData : IModData {
 		NuclearReactorProto canduT2 = registrator.PrototypesDb.Add(new NuclearReactorProto(
 			id: ModIDs.Machines.CanduReactorT2,
 			strings: Proto.CreateStr(ModIDs.Machines.CanduReactorT2,
-				ModTranslation.Get("nuclear-reactor.Candu_Reactor_T2_Build.name", "CANDU Nuclear Reactor II"),
-				ModTranslation.Get("nuclear-reactor.Candu_Reactor_T2_Build.description",
-					"An advanced thermal CANDU reactor with higher energy efficiency, capable of using " +
+				"CANDU Nuclear Reactor II",
+				"An advanced thermal CANDU reactor with higher energy efficiency, capable of using " +
 					"MOX fuel and automatically adjusting its power level (if rated power is " +
-					"available). At maximum power, this plant can generate up to 120 MW of electricity.")),
+					"available). At maximum power, this plant can generate up to 120 MW of electricity."),
 			layout: registrator.LayoutParser.ParseLayoutOrThrow(layoutParamsT2, layout),
 			costs: Costs.Buildings.NuclearReactorT2.MapToEntityCosts(registrator),
 			maxPowerLevel: 4,
@@ -265,7 +262,9 @@ internal class MachineData : IModData {
 			graphics: new NuclearReactorProto.Gfx(
 				prefabPath: "Assets/Base/Buildings/NuclearReactors/NuclearReactorT2.prefab",
 				categories: registrator.GetCategoriesProtos(Ids.ToolbarCategories.Power_Nuclear),
-				soundPrefabPath: "Assets/Base/Buildings/NuclearReactors/Shared/ReactorSound.prefab",
+				// Since 0.8.8 entity sounds come from the game's sound bindings table and the old
+				// ReactorSound.prefab no longer exists, so no sound prefab is passed here.
+				soundPrefabPath: default,
 				fuelIconPath: "Assets/Base/Buildings/NuclearReactors/Shared/MoxReactorFuelIcon.svg",
 				maxEmissionIntensity: 3.5f)));
 
@@ -294,15 +293,14 @@ internal class MachineData : IModData {
 		NuclearReactorProto canduT3 = registrator.PrototypesDb.Add(new NuclearReactorProto(
 			id: ModIDs.Machines.CanduReactorT3,
 			strings: Proto.CreateStr(ModIDs.Machines.CanduReactorT3,
-				ModTranslation.Get("nuclear-reactor.Candu_Reactor_T3_build.name", "CANDU Nuclear Reactor III"),
-				ModTranslation.Get("nuclear-reactor.Candu_Reactor_T3_build.description",
-					"A further-refined thermal CANDU reactor, more powerful than CANDU II, capable of " +
+				"CANDU Nuclear Reactor III",
+				"A further-refined thermal CANDU reactor, more powerful than CANDU II, capable of " +
 					"using MOX fuel and automatically adjusting its power level (if rated power is " +
 					"available). Its more energetic core enriches its entire water circuit with " +
 					"dissolved tritium, so all three coolant/steam outlets exit as tritium-rich " +
 					"high-pressure heavy water instead of the regular kind, requiring a Tritium " +
 					"Separator to recover both substances. At maximum power, this plant can generate " +
-					"up to 240 MW of electricity.")),
+					"up to 240 MW of electricity."),
 			layout: registrator.LayoutParser.ParseLayoutOrThrow(layoutParamsT2, layout),
 			costs: Costs.Buildings.NuclearReactorT2.MapToEntityCosts(registrator),
 			maxPowerLevel: 4,
@@ -331,7 +329,9 @@ internal class MachineData : IModData {
 			graphics: new NuclearReactorProto.Gfx(
 				prefabPath: "Assets/Base/Buildings/NuclearReactors/NuclearReactorT2.prefab",
 				categories: registrator.GetCategoriesProtos(Ids.ToolbarCategories.Power_Nuclear),
-				soundPrefabPath: "Assets/Base/Buildings/NuclearReactors/Shared/ReactorSound.prefab",
+				// Since 0.8.8 entity sounds come from the game's sound bindings table and the old
+				// ReactorSound.prefab no longer exists, so no sound prefab is passed here.
+				soundPrefabPath: default,
 				fuelIconPath: "Assets/Base/Buildings/NuclearReactors/Shared/MoxReactorFuelIcon.svg",
 				maxEmissionIntensity: 3.5f)));
 
@@ -412,9 +412,8 @@ internal class MachineData : IModData {
 		registrator.PrototypesDb.Add(new NuclearReactorProto(
 			id: ModIDs.Machines.FusionReactorT1,
 			strings: Proto.CreateStr(ModIDs.Machines.FusionReactorT1,
-				ModTranslation.Get("nuclear-reactor.Fusion_Reactor_t1.name", "Fusion Nuclear Reactor"),
-				ModTranslation.Get("nuclear-reactor.Fusion_Reactor_t1.description",
-					"The nuclear fusion reactor is an advanced system designed to fuse light nuclei, " +
+				"Fusion Nuclear Reactor",
+				"The nuclear fusion reactor is an advanced system designed to fuse light nuclei, " +
 					"such as deuterium and tritium, generating enormous amounts of clean energy. It " +
 					"works by creating extreme conditions of temperature and pressure that allow the " +
 					"nuclei to fuse, releasing energy in a continuous and controlled manner. It " +
@@ -424,7 +423,7 @@ internal class MachineData : IModData {
 					"emergency cooling is unavailable, the reactor automatically shuts down by " +
 					"draining the molten fuel, resulting in the total loss of the fuel and damage to " +
 					"the reactor. At maximum power, this plant can supply up to 240 MW of electrical " +
-					"energy.")),
+					"energy."),
 			layout: registrator.LayoutParser.ParseLayoutOrThrow(layoutParams, layout),
 			costs: Costs.Buildings.NuclearReactorT3.MapToEntityCosts(registrator),
 			maxPowerLevel: 4,
@@ -462,7 +461,9 @@ internal class MachineData : IModData {
 			graphics: new NuclearReactorProto.Gfx(
 				prefabPath: "Assets/Base/Buildings/NuclearReactors/FastReactor.prefab",
 				categories: registrator.GetCategoriesProtos(Ids.ToolbarCategories.Power_Nuclear),
-				soundPrefabPath: "Assets/Base/Buildings/NuclearReactors/Shared/ReactorSound.prefab",
+				// Since 0.8.8 entity sounds come from the game's sound bindings table and the old
+				// ReactorSound.prefab no longer exists, so no sound prefab is passed here.
+				soundPrefabPath: default,
 				fuelIconPath: Option<string>.None,
 				maxEmissionIntensity: 9f)));
 	}

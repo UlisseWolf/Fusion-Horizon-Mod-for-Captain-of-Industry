@@ -46,13 +46,12 @@ internal class ResearchData : IModData {
 		// ------------------------------------------------------------------------
 		ResearchNodeProto canduReactor = registrator.ResearchNodeProtoBuilder
 			.Start(
-				ModTranslation.Get("research.Research_Candu_Reactor.name", "Nuclear Reactor CANDU"),
+				"Nuclear Reactor CANDU",
 				ModIDs.Research.CanduReactor, costMonths: 170)
-			.Description(ModTranslation.Get("research.Research_Candu_Reactor.description",
-				"A thermal reactor that sustains a nuclear chain reaction using natural uranium fuel " +
+			.Description("A thermal reactor that sustains a nuclear chain reaction using natural uranium fuel " +
 				"rods. The CANDU nuclear reactor is moderated by heavy water, which requires a heat " +
 				"exchanger to produce steam. Warning: CANDU fuel produces spent fuel, which is " +
-				"radioactive and can harm the public if not stored in a specialized facility."))
+				"radioactive and can harm the public if not stored in a specialized facility.")
 			.SetGridPosition(new Vector2i(132, 31))
 			.AddParents(vanillaNuclearReactor)
 			.AddProductIcon(ModIDs.Products.CanduRod)
@@ -73,16 +72,15 @@ internal class ResearchData : IModData {
 		// becomes Nuclear reactor II -> DUPIC -> Fast breeder reactor.
 		ResearchNodeProto dupicRod = registrator.ResearchNodeProtoBuilder
 			.Start(
-				ModTranslation.Get("research.Research_Dupic_Rod.name", "DUPIC Fuel Reprocessing"),
+				"DUPIC Fuel Reprocessing",
 				ModIDs.Research.DupicRod, costMonths: 280)
-			.Description(ModTranslation.Get("research.Research_Dupic_Rod.description",
-				"DUPIC (Direct Use of spent PWR fuel In CANDU) mechanically reprocesses vanilla " +
+			.Description("DUPIC (Direct Use of spent PWR fuel In CANDU) mechanically reprocesses vanilla " +
 				"Spent Fuel into new fuel rods without ever chemically separating out plutonium, " +
 				"using the existing Nuclear Reprocessing Plant. DUPIC Rods burn out faster than " +
 				"dedicated CANDU or MOX rods, but let CANDU II and CANDU III reactors run directly " +
 				"on reprocessed Spent Fuel. Burning a DUPIC Rod yields DUPIC Spent Fuel, which is " +
 				"too degraded for further OREOX recycling and instead feeds a Fast Breeder " +
-				"Reactor's breeding blanket."))
+				"Reactor's breeding blanket.")
 			.SetGridPosition(new Vector2i(150, 31))
 			.AddParents(vanillaNuclearReactor2)
 			.AddProductIcon(ModIDs.Products.DupicRod)
@@ -97,12 +95,11 @@ internal class ResearchData : IModData {
 		// ------------------------------------------------------------------------
 		ResearchNodeProto fusionReactor = registrator.ResearchNodeProtoBuilder
 			.Start(
-				ModTranslation.Get("research.Research_Fusion_Reactor.name", "Fusion Nuclear Reactor"),
+				"Fusion Nuclear Reactor",
 				ModIDs.Research.FusionReactor, costMonths: 650)
-			.Description(ModTranslation.Get("research.Research_Fusion_Reactor.description",
-				"Research into nuclear fusion reactors unlocks the production chain for tritium and " +
+			.Description("Research into nuclear fusion reactors unlocks the production chain for tritium and " +
 				"deuterium, which are used as fuel in nuclear fusion reactors. It also unlocks the " +
-				"production of helium, which is used as a coolant in nuclear fusion reactors."))
+				"production of helium, which is used as a coolant in nuclear fusion reactors.")
 			.SetGridPosition(new Vector2i(164, 50))
 			.AddParents(vanillaFastBreederReactor)
 			.AddProductIcon(ModIDs.Products.DtFuel)
@@ -123,13 +120,12 @@ internal class ResearchData : IModData {
 		// ------------------------------------------------------------------------
 		ResearchNodeProto canduReactor3 = registrator.ResearchNodeProtoBuilder
 			.Start(
-				ModTranslation.Get("research.Research_Candu_Reactor_3.name", "Nuclear Reactor CANDU III"),
+				"Nuclear Reactor CANDU III",
 				ModIDs.Research.CanduReactor3, costMonths: 750)
-			.Description(ModTranslation.Get("research.Research_Candu_Reactor_3.description",
-				"A further-refined CANDU reactor, more powerful than CANDU II. Its coolant comes " +
+			.Description("A further-refined CANDU reactor, more powerful than CANDU II. Its coolant comes " +
 				"out enriched with dissolved tritium, so this research also unlocks the Tritium " +
 				"Separator, needed to recover both tritium and reusable Super-Pressurized Heavy " +
-				"Water from it."))
+				"Water from it.")
 			.SetGridPosition(new Vector2i(172, 50))
 			.AddParents(fusionReactor)
 			.AddProductIcon(ModIDs.Products.HeavyWaterHighTritium)
@@ -148,13 +144,12 @@ internal class ResearchData : IModData {
 		// only ever reference it by the strongly-typed ModIDs constant.
 		ResearchNodeProto plasmaIncinerator = registrator.ResearchNodeProtoBuilder
 			.Start(
-				ModTranslation.Get("research.Research_Plasma_Inceneritor.name", "Industrial Plasma"),
+				"Industrial Plasma",
 				ModIDs.Research.PlasmaIncinerator, costMonths: 800)
-			.Description(ModTranslation.Get("research.Research_Plasma_Inceneritor.description",
-				"This research enables the extraction of plasma from the nuclear fusion reactor, and " +
+			.Description("This research enables the extraction of plasma from the nuclear fusion reactor, and " +
 				"through purification cycles, it produces plasma that can be used in non-nuclear " +
 				"industrial systems — from Incinerator II, which allows plasma to be used as fuel " +
-				"for burning waste, to sealed Plasma Modules for advanced medical equipment."))
+				"for burning waste, to sealed Plasma Modules for advanced medical equipment.")
 			.SetGridPosition(new Vector2i(178, 50))
 			.AddParents(fusionReactor)
 			.AddProductIcon(ModIDs.Products.Plasma)
@@ -171,13 +166,12 @@ internal class ResearchData : IModData {
 		// III/Fusion, since this is a pure-fission technology.
 		ResearchNodeProto isotopeSeparation = registrator.ResearchNodeProtoBuilder
 			.Start(
-				ModTranslation.Get("research.Research_Isotope_Separation.name", "Isotope Separation"),
+				"Isotope Separation",
 				ModIDs.Research.IsotopeSeparation, costMonths: 550)
-			.Description(ModTranslation.Get("research.Research_Isotope_Separation.description",
-				"Separates fission platinum-group metals and sealed Cs-137/Sr-90 sources out of " +
+			.Description("Separates fission platinum-group metals and sealed Cs-137/Sr-90 sources out of " +
 				"Fission Products, yielding stable, reusable Industrial Isotopes. Most of the " +
 				"processed material remains Depleted Fission Products, still requiring radioactive " +
-				"waste storage, but for somewhat less time than untreated Fission Products."))
+				"waste storage, but for somewhat less time than untreated Fission Products.")
 			.SetGridPosition(new Vector2i(185, 31))
 			.AddParents(vanillaFastBreederReactor)
 			.AddProductIcon(ModIDs.Products.IndustrialIsotopes)
@@ -198,12 +192,11 @@ internal class ResearchData : IModData {
 		// "Medical supplies III", and Industrial Plasma.
 		ResearchNodeProto medicalSupplies4 = registrator.ResearchNodeProtoBuilder
 			.Start(
-				ModTranslation.Get("research.Research_Medical_Supplies_4.name", "Medical Supplies IV"),
+				"Medical Supplies IV",
 				ModIDs.Research.MedicalSupplies4, costMonths: 900)
-			.Description(ModTranslation.Get("research.Research_Medical_Supplies_4.description",
-				"Combines Industrial Isotopes for nuclear medicine with Plasma Modules for advanced " +
+			.Description("Combines Industrial Isotopes for nuclear medicine with Plasma Modules for advanced " +
 				"plasma-based medical equipment, unlocking Medical Supplies IV — the most advanced " +
-				"tier of healthcare, provided directly to Clinics."))
+				"tier of healthcare, provided directly to Clinics.")
 			.SetGridPosition(new Vector2i(195, 40))
 			.AddParents(isotopeSeparation, vanillaMedicalSupplies3, plasmaIncinerator)
 			.AddProductIcon(ModIDs.Products.MedicalSupplies4)
@@ -232,14 +225,13 @@ internal class ResearchData : IModData {
 		// supplies II at (132,43)) are what make it unlock first in practice.
 		registrator.ResearchNodeProtoBuilder
 			.Start(
-				ModTranslation.Get("research.Research_Organic_Pesticide.name", "Organic Pesticides"),
+				"Organic Pesticides",
 				ModIDs.Research.OrganicPesticide, costMonths: 60)
-			.Description(ModTranslation.Get("research.Research_Organic_Pesticide.description",
-				"Organic pesticides are pest control products derived from natural ingredients of " +
+			.Description("Organic pesticides are pest control products derived from natural ingredients of " +
 				"botanical, microbial, or mineral origin. Although they are chemical compounds, " +
 				"they are derived from natural sources and tend to break down more quickly in the " +
 				"environment than synthetic pesticides, making them generally less persistent and " +
-				"less harmful to ecosystems and human health."))
+				"less harmful to ecosystems and human health.")
 			.SetGridPosition(new Vector2i(124, 41))
 			.AddParents(vanillaSugarCane, recipesPlusPlusAdvancedFarming)
 			.AddProductIcon(vanillaPesticideId)
