@@ -37,8 +37,6 @@ public sealed class FusionHorizonMod : IMod {
 	public void RegisterPrototypes(ProtoRegistrator registrator) {
 		Log.Info("[Fusion Horizon] Registering prototypes");
 
-		ModTranslation.Initialize(Manifest.RootDirectoryPath);
-
 		registrator.RegisterData<ProductData>();
 		registrator.RegisterData<MachineData>();
 		registrator.RegisterData<RecipesData>();

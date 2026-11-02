@@ -57,14 +57,14 @@ By default the project builds straight into your local Mods folder (`%APPDATA%\C
 │       ├── Assets/           — source textures/models feeding the Unity companion project
 │       │                       (excluded from the build output — not needed at runtime)
 │       ├── AssetBundles/     — compiled Unity AssetBundles referenced by the mod
-│       └── Translations/     — en / it / fr / es / de / pt / ru JSON translation files
+│       └── Translations/     — it / fr / es / de / pt / ru JSON translation files (game-native format)
 └── old/
     └── Fusion_Horizon/       — legacy CustomAssets/Python version, kept for reference
 ```
 
 ## Localization
 
-Translation files live under `src/FusionHorizonDLL/Translations/<lang>.json`, keyed by a stable `<category>.<protoId>.<field>` convention (e.g. `research.Research_Isotope_Separation.name`) rather than by the English source text, so editing English copy later never silently breaks a translation lookup. Contributions for additional languages are welcome — just mirror the key set in `en.json`.
+Translation files live under `src/FusionHorizonDLL/Translations/<lang>.json` and use the game's native mod translation format (Captain of Industry 0.8.8+, see the [official guide](https://coigame.com/Modding/Translations)): a JSON array of `["<stringId>", "<text>"]` pairs, where a proto's name and description have the IDs `<protoId>__name` and `<protoId>__desc` (e.g. `Research_Isotope_Separation__name`). English is the text written in the source code, so there is no `en.json`. To add a language, run `export_mod_translations Fusion_Horizon` in the in-game console, copy the generated `template.json` to `<lang>.json` and translate the texts.
 
 - Russian translation by [**Hoochie6**](https://github.com/Hoochie63).
 

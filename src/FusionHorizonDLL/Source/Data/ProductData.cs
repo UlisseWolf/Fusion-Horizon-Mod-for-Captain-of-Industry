@@ -10,9 +10,10 @@ namespace FusionHorizon.Data;
 // product: FluidProductProto for pipe/tank fluids, CountableProductProto for belt/crate
 // unit items. Both are added via registrator.PrototypesDb.Add(new ...Proto(...)).
 //
-// Display strings go through Proto.CreateStr(id, name, description); each name/
-// description is wrapped in ModTranslation.Get("<category>.<id>.<field>", englishText) so
-// translated copy replaces it automatically once a matching key exists in Translations/.
+// Display strings go through Proto.CreateStr(id, name, description) with the English
+// text. Since game 0.8.8 the game translates them itself: their string IDs are
+// "<protoId>__name" / "<protoId>__desc", and Translations/<lang>.json supplies the
+// translated text for those IDs (see https://coigame.com/Modding/Translations).
 //
 // Gfx has two distinct constructors for CountableProductProto: (a) prefabPath +
 // customIconPath, for a product with its own dedicated Unity prefab, or (b) meshFamily +
@@ -29,10 +30,9 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.HeavyWater,
 			strings: Proto.CreateStr(ModIDs.Products.HeavyWater,
-				ModTranslation.Get("product_fluid.Product_heavy_water.name", "Heavy Water"),
-				ModTranslation.Get("product_fluid.Product_heavy_water.description",
-					"Heavy Water is a deuterium\u2011enriched form of water used as a neutron moderator in " +
-					"advanced nuclear reactors, enabling stable and efficient fission processes.")),
+				"Heavy Water",
+				"Heavy Water is a deuterium\u2011enriched form of water used as a neutron moderator in " +
+					"advanced nuclear reactors, enabling stable and efficient fission processes."),
 			isStorable: true,
 			canBeDiscarded: true,
 			graphics: new FluidProductProto.Gfx(
@@ -46,11 +46,10 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.HeavyWaterHigh,
 			strings: Proto.CreateStr(ModIDs.Products.HeavyWaterHigh,
-				ModTranslation.Get("product_fluid.Product_heavy_water_high.name", "Heavy Water (High)"),
-				ModTranslation.Get("product_fluid.Product_heavy_water_high.description",
-					"Heavy Water (High) is a form of deuterium-water maintained at high pressures in the " +
+				"Heavy Water (High)",
+				"Heavy Water (High) is a form of deuterium-water maintained at high pressures in the " +
 					"primary circuit of a CANDU reactor, where it serves as both a moderator and a coolant, " +
-					"exiting the reactor as a dense, hot, and energized fluid after absorbing heat from the core.")),
+					"exiting the reactor as a dense, hot, and energized fluid after absorbing heat from the core."),
 			isStorable: false,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -66,13 +65,11 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.HeavyWaterHighTritium,
 			strings: Proto.CreateStr(ModIDs.Products.HeavyWaterHighTritium,
-				ModTranslation.Get("product_fluid.Product_heavy_water_high_tritium.name",
-					"Heavy Water (High, Tritium-rich)"),
-				ModTranslation.Get("product_fluid.Product_heavy_water_high_tritium.description",
-					"A high-pressure form of heavy water drawn from the coolant loop of a CANDU 3 " +
+				"Heavy Water (High, Tritium-rich)",
+				"A high-pressure form of heavy water drawn from the coolant loop of a CANDU 3 " +
 					"reactor. Prolonged neutron exposure has enriched it with dissolved tritium, so " +
 					"it must be processed by a Tritium Separator to recover the tritium and the " +
-					"regular high-pressure Heavy Water before either can be reused.")),
+					"regular high-pressure Heavy Water before either can be reused."),
 			isStorable: false,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -88,13 +85,11 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.HeavyWaterSp,
 			strings: Proto.CreateStr(ModIDs.Products.HeavyWaterSp,
-				ModTranslation.Get("product_fluid.Product_heavy_water_sp.name",
-					"Heavy Water (Super-Pressurized)"),
-				ModTranslation.Get("product_fluid.Product_heavy_water_sp.description",
-					"An even denser, super-pressurized form of heavy water, recovered by a Tritium " +
+				"Heavy Water (Super-Pressurized)",
+				"An even denser, super-pressurized form of heavy water, recovered by a Tritium " +
 					"Separator alongside pure Tritium when splitting the tritium-rich coolant drawn " +
 					"from a CANDU 3 reactor. Its extra pressure lets a heat exchanger raise ordinary " +
-					"water all the way to super-pressurized steam.")),
+					"water all the way to super-pressurized steam."),
 			isStorable: false,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -108,11 +103,10 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.Deuterium,
 			strings: Proto.CreateStr(ModIDs.Products.Deuterium,
-				ModTranslation.Get("product_fluid.Product_deuterium.name", "Deuterium"),
-				ModTranslation.Get("product_fluid.Product_deuterium.description",
-					"Deuterium is the heavy isotope of hydrogen, which exists in gaseous form as D\u2082 " +
+				"Deuterium",
+				"Deuterium is the heavy isotope of hydrogen, which exists in gaseous form as D\u2082 " +
 					"molecules. It is a light, stable, and non-radioactive gas used in nuclear and " +
-					"scientific applications due to its unique isotopic properties.")),
+					"scientific applications due to its unique isotopic properties."),
 			isStorable: true,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -126,11 +120,10 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.Helium,
 			strings: Proto.CreateStr(ModIDs.Products.Helium,
-				ModTranslation.Get("product_fluid.Product_helium.name", "Helium"),
-				ModTranslation.Get("product_fluid.Product_helium.description",
-					"Helium is an extremely light, inert, and non-reactive noble gas. It is stable, " +
+				"Helium",
+				"Helium is an extremely light, inert, and non-reactive noble gas. It is stable, " +
 					"non-flammable, and is used in cryogenic, scientific, and industrial applications " +
-					"due to its low density and complete lack of chemical reactivity.")),
+					"due to its low density and complete lack of chemical reactivity."),
 			isStorable: true,
 			canBeDiscarded: true,
 			graphics: new FluidProductProto.Gfx(
@@ -144,12 +137,11 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.HeliumHot,
 			strings: Proto.CreateStr(ModIDs.Products.HeliumHot,
-				ModTranslation.Get("product_fluid.Product_helium_hot.name", "Helium (High)"),
-				ModTranslation.Get("product_fluid.Product_helium_hot.description",
-					"Helium (High) at High Pressure is a compressed noble gas brought to high temperatures " +
+				"Helium (High)",
+				"Helium (High) at High Pressure is a compressed noble gas brought to high temperatures " +
 					"while retaining its complete chemical inertness. Under these conditions, it becomes an " +
 					"extremely stable thermal fluid, ideal for advanced cooling systems, heat transfer, and " +
-					"industrial processes that require a light, clean gas resistant to extreme temperatures.")),
+					"industrial processes that require a light, clean gas resistant to extreme temperatures."),
 			isStorable: false,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -163,12 +155,11 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.Tritium,
 			strings: Proto.CreateStr(ModIDs.Products.Tritium,
-				ModTranslation.Get("product_fluid.Product_tritium.name", "Tritium"),
-				ModTranslation.Get("product_fluid.Product_tritium.description",
-					"Tritium is a radioactive isotope of hydrogen, consisting of one proton and two " +
+				"Tritium",
+				"Tritium is a radioactive isotope of hydrogen, consisting of one proton and two " +
 					"neutrons. It is a light, unstable gas that emits weak beta radiation and is used in " +
 					"nuclear and scientific applications, as well as in the production of self-sustaining " +
-					"light sources.")),
+					"light sources."),
 			isStorable: true,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -182,11 +173,10 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.DtFuel,
 			strings: Proto.CreateStr(ModIDs.Products.DtFuel,
-				ModTranslation.Get("product_fluid.Product_dtfuel.name", "Fusion Core Fuel"),
-				ModTranslation.Get("product_fluid.Product_dtfuel.description",
-					"Fusion Core Fuel is an advanced fuel for fusion reactors, consisting of an optimized " +
+				"Fusion Core Fuel",
+				"Fusion Core Fuel is an advanced fuel for fusion reactors, consisting of an optimized " +
 					"mixture of deuterium and tritium. It provides high energy density and enables highly " +
-					"efficient fusion reactions, serving as the foundation for next-generation energy systems.")),
+					"efficient fusion reactions, serving as the foundation for next-generation energy systems."),
 			isStorable: true,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -200,12 +190,11 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.PlasmaDirty,
 			strings: Proto.CreateStr(ModIDs.Products.PlasmaDirty,
-				ModTranslation.Get("product_fluid.Product_plasmadirty.name", "Plasma Dirty"),
-				ModTranslation.Get("product_fluid.Product_plasmadirty.description",
-					"An ionized fluid extracted from a fusion reactor, containing gaseous impurities such " +
+				"Plasma Dirty",
+				"An ionized fluid extracted from a fusion reactor, containing gaseous impurities such " +
 					"as deuterium, helium, and tritium. The mixture exhibits unstable behavior and " +
 					"irregular luminosity due to the presence of light nuclei that have not fully fused. " +
-					"It is used as a byproduct of the process or for studies of isotopic recombination.")),
+					"It is used as a byproduct of the process or for studies of isotopic recombination."),
 			isStorable: false,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -219,11 +208,10 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.PlasmaRefined,
 			strings: Proto.CreateStr(ModIDs.Products.PlasmaRefined,
-				ModTranslation.Get("product_fluid.Product_plasmarefined.name", "Refined Plasma"),
-				ModTranslation.Get("product_fluid.Product_plasmarefined.description",
-					"High-pressure plasma obtained by purifying raw plasma. It still contains residual " +
+				"Refined Plasma",
+				"High-pressure plasma obtained by purifying raw plasma. It still contains residual " +
 					"impurities and helium, making it more stable but not sufficiently pure. It requires " +
-					"a further refining step before it can be used in non-nuclear industrial processes.")),
+					"a further refining step before it can be used in non-nuclear industrial processes."),
 			isStorable: false,
 			canBeDiscarded: false,
 			graphics: new FluidProductProto.Gfx(
@@ -237,11 +225,10 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new FluidProductProto(
 			id: ModIDs.Products.Plasma,
 			strings: Proto.CreateStr(ModIDs.Products.Plasma,
-				ModTranslation.Get("product_fluid.Product_plasma.name", "Plasma"),
-				ModTranslation.Get("product_fluid.Product_plasma.description",
-					"Fully purified plasma obtained from the final stage of refining treated plasma. It is " +
+				"Plasma",
+				"Fully purified plasma obtained from the final stage of refining treated plasma. It is " +
 					"free of impurities and has a stable composition, making it suitable for use in " +
-					"advanced industrial processes.")),
+					"advanced industrial processes."),
 			isStorable: true,
 			canBeDiscarded: true,
 			graphics: new FluidProductProto.Gfx(
@@ -261,10 +248,9 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new CountableProductProto(
 			id: ModIDs.Products.CanduRod,
 			strings: Proto.CreateStr(ModIDs.Products.CanduRod,
-				ModTranslation.Get("product_unit.Product_Candu_rod.name", "CANDU Rod"),
-				ModTranslation.Get("product_unit.Product_Candu_rod.description",
-					"A CANDU fuel rod consisting of compacted uranium-bearing material enclosed in a " +
-					"sturdy steel cladding, ready for use in heavy-water reactors.")),
+				"CANDU Rod",
+				"A CANDU fuel rod consisting of compacted uranium-bearing material enclosed in a " +
+					"sturdy steel cladding, ready for use in heavy-water reactors."),
 			maxQuantityPerTransportedProduct: new Quantity(3),
 			isStorable: true,
 			graphics: new CountableProductProto.Gfx(
@@ -281,14 +267,13 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new CountableProductProto(
 			id: ModIDs.Products.DupicRod,
 			strings: Proto.CreateStr(ModIDs.Products.DupicRod,
-				ModTranslation.Get("product_unit.Product_dupic_rod.name", "DUPIC Rod"),
-				ModTranslation.Get("product_unit.Product_dupic_rod.description",
-					"A fuel rod fabricated directly from spent light-water-reactor fuel via the OREOX " +
+				"DUPIC Rod",
+				"A fuel rod fabricated directly from spent light-water-reactor fuel via the OREOX " +
 					"process — repeated oxidation/reduction cycles that mechanically pulverize and " +
 					"re-sinter the spent fuel into new pellets, without ever chemically separating out " +
 					"plutonium. Still fissile enough for a heavy-water-moderated CANDU reactor, though " +
 					"less refined than dedicated CANDU or MOX rods. Usable only in CANDU II and CANDU " +
-					"III reactors.")),
+					"III reactors."),
 			maxQuantityPerTransportedProduct: new Quantity(3),
 			isStorable: true,
 			graphics: new CountableProductProto.Gfx(
@@ -310,14 +295,13 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new CountableProductProto(
 			id: ModIDs.Products.DupicSpentFuel,
 			strings: Proto.CreateStr(ModIDs.Products.DupicSpentFuel,
-				ModTranslation.Get("product_unit.Product_dupic_spent_fuel.name", "DUPIC Spent Fuel"),
-				ModTranslation.Get("product_unit.Product_dupic_spent_fuel.description",
-					"Spent fuel discharged from a DUPIC Rod burned in a CANDU II or III reactor. Having " +
+				"DUPIC Spent Fuel",
+				"Spent fuel discharged from a DUPIC Rod burned in a CANDU II or III reactor. Having " +
 					"already been irradiated once in a light-water reactor before being refabricated into " +
 					"a DUPIC Rod, its isotopic composition is too degraded for the simple mechanical OREOX " +
 					"process to recycle a second time — it can no longer be reprocessed back into more " +
 					"DUPIC Rods. It can still be reprocessed into Blanket Fuel for a Fast Breeder " +
-					"Reactor's breeding blanket, same as regular Spent Fuel or Spent MOX.")),
+					"Reactor's breeding blanket, same as regular Spent Fuel or Spent MOX."),
 			maxQuantityPerTransportedProduct: new Quantity(3),
 			isStorable: true,
 			radioactivity: 2,
@@ -337,12 +321,11 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new CountableProductProto(
 			id: ModIDs.Products.IndustrialIsotopes,
 			strings: Proto.CreateStr(ModIDs.Products.IndustrialIsotopes,
-				ModTranslation.Get("product_unit.Product_industrial_isotopes.name", "Industrial Isotopes"),
-				ModTranslation.Get("product_unit.Product_industrial_isotopes.description",
-					"A refined mix of fission platinum-group metals (ruthenium, rhodium, palladium) and " +
+				"Industrial Isotopes",
+				"A refined mix of fission platinum-group metals (ruthenium, rhodium, palladium) and " +
 					"sealed radioactive sources (caesium-137, strontium-90), separated out from Fission " +
 					"Products. Stable and safe to store and transport as-is, unlike short-lived medical " +
-					"isotopes such as technetium-99m. Used in advanced medical supply manufacturing.")),
+					"isotopes such as technetium-99m. Used in advanced medical supply manufacturing."),
 			maxQuantityPerTransportedProduct: new Quantity(3),
 			isStorable: true,
 			radioactivity: 2,
@@ -362,13 +345,12 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new CountableProductProto(
 			id: ModIDs.Products.DepletedFissionProducts,
 			strings: Proto.CreateStr(ModIDs.Products.DepletedFissionProducts,
-				ModTranslation.Get("product_unit.Product_depleted_fission_products.name", "Depleted Fission Products"),
-				ModTranslation.Get("product_unit.Product_depleted_fission_products.description",
-					"The residual mix left over after Industrial Isotopes have been separated out of " +
+				"Depleted Fission Products",
+				"The residual mix left over after Industrial Isotopes have been separated out of " +
 					"Fission Products. Having lost its caesium-137/strontium-90 fraction — the isotopes " +
 					"that dominate activity on a human timescale — it becomes safe to dispose of somewhat " +
 					"sooner than untreated Fission Products, but must still be kept in radioactive waste " +
-					"storage until it decays.")),
+					"storage until it decays."),
 			maxQuantityPerTransportedProduct: new Quantity(3),
 			isStorable: true,
 			radioactivity: 6,
@@ -384,11 +366,10 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new CountableProductProto(
 			id: ModIDs.Products.PlasmaModule,
 			strings: Proto.CreateStr(ModIDs.Products.PlasmaModule,
-				ModTranslation.Get("product_unit.Product_plasma_module.name", "Plasma Module"),
-				ModTranslation.Get("product_unit.Product_plasma_module.description",
-					"A sealed glass-encased cartridge containing refined plasma, built to power advanced " +
+				"Plasma Module",
+				"A sealed glass-encased cartridge containing refined plasma, built to power advanced " +
 					"medical equipment such as plasma scalpels and sterilization systems — plasma medicine " +
-					"devices use sealed modules like this rather than raw plasma directly.")),
+					"devices use sealed modules like this rather than raw plasma directly."),
 			maxQuantityPerTransportedProduct: new Quantity(3),
 			isStorable: true,
 			graphics: new CountableProductProto.Gfx(
@@ -406,11 +387,10 @@ internal class ProductData : IModData {
 		registrator.PrototypesDb.Add(new CountableProductProto(
 			id: ModIDs.Products.MedicalSupplies4,
 			strings: Proto.CreateStr(ModIDs.Products.MedicalSupplies4,
-				ModTranslation.Get("product_unit.Product_medical_supplies_4.name", "Medical Supplies IV"),
-				ModTranslation.Get("product_unit.Product_medical_supplies_4.description",
-					"The most advanced tier of medical supplies, combining Industrial Isotopes for " +
+				"Medical Supplies IV",
+				"The most advanced tier of medical supplies, combining Industrial Isotopes for " +
 					"nuclear medicine (diagnostics, radiotherapy) with Plasma Modules for advanced " +
-					"plasma-based medical equipment such as plasma scalpels and sterilization systems.")),
+					"plasma-based medical equipment such as plasma scalpels and sterilization systems."),
 			maxQuantityPerTransportedProduct: new Quantity(3),
 			isStorable: true,
 			graphics: new CountableProductProto.Gfx(

@@ -66,9 +66,8 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.CanduRod)
-			.Description(ModTranslation.Get("recipe.Recipe_Candu_Rod.description",
-				"An industrial process that compresses yellowcake into a ceramic material and " +
-				"inserts it into a steel cladding, forming a ready-to-use CANDU fuel rod."))
+			.Description("An industrial process that compresses yellowcake into a ceramic material and " +
+				"inserts it into a steel cladding, forming a ready-to-use CANDU fuel rod.")
 			.AddInput(P("Product_Yellowcake"), new Quantity(2), "E")
 			.AddInput(P("Product_Steel"), new Quantity(1), "D")
 			.AddOutput(canduRod, new Quantity(2), "Y")
@@ -77,10 +76,9 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.HeavyWater)
-			.Description(ModTranslation.Get("recipe.Recipe_heavy_water.description",
-				"An isotopic exchange process in which water, high-pressure steam, and acid react " +
+			.Description("An isotopic exchange process in which water, high-pressure steam, and acid react " +
 				"to concentrate deuterium. The separation yields heavy water as the enriched " +
-				"fraction and produces sour water as a byproduct to be treated or recycled."))
+				"fraction and produces sour water as a byproduct to be treated or recycled.")
 			.AddInput(P("Product_Water"), new Quantity(120), "A")
 			.AddInput(P("Product_SteamHi"), new Quantity(40), "B")
 			.AddInput(P("Product_Acid"), new Quantity(15), "C")
@@ -91,10 +89,9 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.PrimarySteamGenerator)
-			.Description(ModTranslation.Get("recipe.Recipe_primary_steam_generator.description",
-				"Primary Steam Generation is the process in which heat from the pressurized " +
+			.Description("Primary Steam Generation is the process in which heat from the pressurized " +
 				"heavy\u2011water primary loop is transferred to ordinary water, converting it into " +
-				"high\u2011pressure steam while the heavy water exits cooled but unchanged."))
+				"high\u2011pressure steam while the heavy water exits cooled but unchanged.")
 			.AddInput(heavyWaterHigh, new Quantity(192), "A")
 			.AddInput(P("Product_Water"), new Quantity(192), "B")
 			.AddOutput(heavyWater, new Quantity(192), "W")
@@ -108,11 +105,10 @@ internal class RecipesData : IModData {
 		// straight from CANDU I/II's cheap, early-game Heavy Water (High).
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.PrimarySteamGeneratorSp)
-			.Description(ModTranslation.Get("recipe.Recipe_primary_steam_generator_sp.description",
-				"Primary Steam Generation is the process in which heat from the super\u2011" +
+			.Description("Primary Steam Generation is the process in which heat from the super\u2011" +
 				"pressurized heavy\u2011water primary loop is transferred to ordinary water, " +
 				"converting it into super\u2011pressurized steam while the heavy water exits " +
-				"cooled down to its regular high\u2011pressure form."))
+				"cooled down to its regular high\u2011pressure form.")
 			.AddInput(heavyWaterSp, new Quantity(192), "A")
 			.AddInput(P("Product_Water"), new Quantity(192), "B")
 			.AddOutput(heavyWaterHigh, new Quantity(192), "W")
@@ -124,10 +120,9 @@ internal class RecipesData : IModData {
 		// Heavy Water.
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.TritiumSeparation)
-			.Description(ModTranslation.Get("recipe.Recipe_tritium_separation.description",
-				"An isotopic separation process that draws off the dissolved tritium from the " +
+			.Description("An isotopic separation process that draws off the dissolved tritium from the " +
 				"tritium-rich, high-pressure heavy water produced by a CANDU 3 reactor's coolant " +
-				"loop, yielding pure tritium and recovering Super-Pressurized Heavy Water."))
+				"loop, yielding pure tritium and recovering Super-Pressurized Heavy Water.")
 			.AddInput(heavyWaterHighTritium, new Quantity(60), "A")
 			.AddOutput(tritium, new Quantity(12), "X")
 			.AddOutput(heavyWaterSp, new Quantity(60), "Y")
@@ -144,10 +139,9 @@ internal class RecipesData : IModData {
 		// SpentFuelReprocessing, this recipe has no Plutonium output.
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.DupicRodReprocessing)
-			.Description(ModTranslation.Get("recipe.Recipe_dupic_rod_reprocessing.description",
-				"The OREOX process (repeated oxidation/reduction cycles) mechanically pulverizes " +
+			.Description("The OREOX process (repeated oxidation/reduction cycles) mechanically pulverizes " +
 				"and re-sinters spent light-water-reactor fuel into new DUPIC fuel rods, without " +
-				"ever chemically separating out plutonium."))
+				"ever chemically separating out plutonium.")
 			.AddInput(P("Product_SpentFuel"), new Quantity(8), "E")
 			.AddInput(P("Product_Acid"), new Quantity(2), "C")
 			.AddOutput(dupicRod, new Quantity(6), "X")
@@ -162,10 +156,9 @@ internal class RecipesData : IModData {
 		// must be the machine's Fluid output ("J"), not one of the Countable ones.
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.DupicSpentFuelToBlanket)
-			.Description(ModTranslation.Get("recipe.Recipe_dupic_spent_fuel_to_blanket.description",
-				"Vitrifies DUPIC Spent Fuel — too isotopically degraded for further OREOX recycling " +
+			.Description("Vitrifies DUPIC Spent Fuel — too isotopically degraded for further OREOX recycling " +
 				"— into Blanket Fuel for a Fast Breeder Reactor's breeding blanket, exactly like " +
-				"regular Spent Fuel or Spent MOX."))
+				"regular Spent Fuel or Spent MOX.")
 			.AddInput(dupicSpentFuel, new Quantity(1), "E")
 			.AddInput(P("Product_Acid"), new Quantity(1), "C")
 			.AddInput(P("Product_MoltenGlass"), new Quantity(1), "A")
@@ -186,11 +179,10 @@ internal class RecipesData : IModData {
 		// so the separated-out mass can't be fed back into this same recipe.
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.IsotopeSeparation)
-			.Description(ModTranslation.Get("recipe.Recipe_isotope_separation.description",
-				"Separates fission platinum-group metals and sealed Cs-137/Sr-90 sources out of " +
+			.Description("Separates fission platinum-group metals and sealed Cs-137/Sr-90 sources out of " +
 				"Fission Products, yielding a small quantity of stable, reusable Industrial " +
 				"Isotopes. Most of the input mass remains Depleted Fission Products, still " +
-				"requiring radioactive waste storage."))
+				"requiring radioactive waste storage.")
 			.AddInput(P("Product_FissionProduct"), new Quantity(20), "E")
 			.AddOutput(industrialIsotopes, new Quantity(2), "X")
 			.AddOutput(depletedFissionProducts, new Quantity(18), "Y")
@@ -203,9 +195,8 @@ internal class RecipesData : IModData {
 		// Assembly recipe below only ever needs Countable ports.
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.PlasmaModuleAssembly)
-			.Description(ModTranslation.Get("recipe.Recipe_plasma_module_assembly.description",
-				"Encases refined Plasma inside a sealed glass cartridge, producing a stable, " +
-				"transportable Plasma Module ready to power advanced medical equipment."))
+			.Description("Encases refined Plasma inside a sealed glass cartridge, producing a stable, " +
+				"transportable Plasma Module ready to power advanced medical equipment.")
 			.AddInput(plasma, new Quantity(4), "A")
 			.AddInput(P("Product_Glass"), new Quantity(2), "D")
 			.AddOutput(plasmaModule, new Quantity(4), "Y")
@@ -218,10 +209,9 @@ internal class RecipesData : IModData {
 		// of the 3 Countable input ports can accept any of the 3 ingredients.
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.MedicalSupplies4Assembly)
-			.Description(ModTranslation.Get("recipe.Recipe_medical_supplies_4_assembly.description",
-				"Combines Industrial Isotopes for nuclear medicine with Plasma Modules for " +
+			.Description("Combines Industrial Isotopes for nuclear medicine with Plasma Modules for " +
 				"advanced plasma-based equipment, upgrading Medical Supplies III into the most " +
-				"advanced tier of medical care."))
+				"advanced tier of medical care.")
 			.AddInput(P("Product_MedicalSupplies3"), new Quantity(8))
 			.AddInput(plasmaModule, new Quantity(2))
 			.AddInput(industrialIsotopes, new Quantity(2))
@@ -255,12 +245,11 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.DtFuel)
-			.Description(ModTranslation.Get("recipe.Recipe_dtfuel.description",
-				"Fusion Core Fuel is produced through the controlled combination of deuterium and " +
+			.Description("Fusion Core Fuel is produced through the controlled combination of deuterium and " +
 				"tritium, which are purified and compressed to create a high-energy isotopic " +
 				"mixture. This compound ensures stability during storage and maximum efficiency in " +
 				"initiating fusion, making it the operational standard for advanced next-generation " +
-				"reactors."))
+				"reactors.")
 			.AddInput(deuterium, new Quantity(15), "A")
 			.AddInput(tritium, new Quantity(15), "B")
 			.AddOutput(dtFuel, new Quantity(30), "X")
@@ -269,10 +258,9 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.PrimarySteamGeneratorHelium)
-			.Description(ModTranslation.Get("recipe.Recipe_primary_steam_generator_helium.description",
-				"Primary Steam Generation is the process in which heat from the pressurized helium " +
+			.Description("Primary Steam Generation is the process in which heat from the pressurized helium " +
 				"primary loop is transferred to ordinary water, converting it into high\u2011pressure " +
-				"steam while the heavy water exits cooled but unchanged."))
+				"steam while the heavy water exits cooled but unchanged.")
 			.AddInput(heliumHot, new Quantity(192), "A")
 			.AddInput(P("Product_Water"), new Quantity(192), "B")
 			.AddOutput(helium, new Quantity(192), "W")
@@ -282,10 +270,9 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.RefinedPlasma)
-			.Description(ModTranslation.Get("recipe.Recipe_refinedplasma.description",
-				"A high-pressure filtration process that treats contaminated plasma by selectively " +
+			.Description("A high-pressure filtration process that treats contaminated plasma by selectively " +
 				"separating deuterium and tritium, producing a recoverable and reusable mixture. " +
-				"The residual plasma is partially purified and ready for further refinement."))
+				"The residual plasma is partially purified and ready for further refinement.")
 			.AddInput(plasmaDirty, new Quantity(15))
 			.AddOutput(plasmaRefined, new Quantity(12), "X")
 			.AddOutput(dtFuel, new Quantity(3), "J")
@@ -294,11 +281,10 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.Plasma)
-			.Description(ModTranslation.Get("recipe.Recipe_plasma.description",
-				"An advanced purification process that treats refined plasma by selectively " +
+			.Description("An advanced purification process that treats refined plasma by selectively " +
 				"removing residual helium and the remaining impurities. The resulting plasma " +
 				"achieves a stable and controlled composition, making it fully suitable for use in " +
-				"non-nuclear industrial processes."))
+				"non-nuclear industrial processes.")
 			.AddInput(plasmaRefined, new Quantity(12))
 			.AddOutput(plasma, new Quantity(10), "X")
 			.AddOutput(helium, new Quantity(2), "J")
@@ -311,10 +297,9 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.PlasmaTrash)
-			.Description(ModTranslation.Get("recipe.Recipe_plasma_trash.description",
-				"It uses plasma to incinerate waste, converting inorganic waste into slag and " +
+			.Description("It uses plasma to incinerate waste, converting inorganic waste into slag and " +
 				"organic waste into combustible gas. Water is used to cool the system, producing " +
-				"super-pressurized steam."))
+				"super-pressurized steam.")
 			.AddInput(plasma, new Quantity(2), "C")
 			.AddInput(P("Product_Waste"), new Quantity(48))
 			.AddInput(P("Product_Water"), new Quantity(6), "D")
@@ -326,10 +311,9 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.PlasmaTrashCompact)
-			.Description(ModTranslation.Get("recipe.Recipe_plasma_trash_compact.description",
-				"It uses plasma to incinerate waste pressed, converting inorganic waste into slag " +
+			.Description("It uses plasma to incinerate waste pressed, converting inorganic waste into slag " +
 				"and organic waste into combustible gas. Water is used to cool the system, " +
-				"producing super-pressurized steam."))
+				"producing super-pressurized steam.")
 			.AddInput(plasma, new Quantity(2), "C")
 			.AddInput(P("Product_WastePressed"), new Quantity(16))
 			.AddInput(P("Product_Water"), new Quantity(6), "D")
@@ -363,12 +347,11 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.Bioethanol)
-			.Description(ModTranslation.Get("recipe.Recipe_Bioethanol.description",
-				"Bioethanol is an ethyl alcohol derived from plants, produced through the " +
+			.Description("Bioethanol is an ethyl alcohol derived from plants, produced through the " +
 				"fermentation of biomass such as corn, sugarcane, grains, or agricultural residues. " +
 				"It is considered a renewable biofuel and is used both as a gasoline additive and " +
 				"in household stoves and fireplaces, thanks to its clean combustion, which produces " +
-				"mainly water vapor and carbon dioxide."))
+				"mainly water vapor and carbon dioxide.")
 			.AddInput(P("Product_Sugar"), new Quantity(8), "C")
 			.AddInput(P("Product_CarbonDioxide"), new Quantity(8), "A")
 			.AddInput(P("Product_Water"), new Quantity(8), "B")
@@ -379,12 +362,11 @@ internal class RecipesData : IModData {
 
 		registrator.RecipeProtoBuilder
 			.Start(ModIDs.Recipes.OrganicPesticide)
-			.Description(ModTranslation.Get("recipe.Recipe_Organic_pesticide.description",
-				"Organic pesticides are pest control products derived from natural ingredients of " +
+			.Description("Organic pesticides are pest control products derived from natural ingredients of " +
 				"botanical, microbial, or mineral origin. Although they are chemical compounds, " +
 				"they are derived from natural sources and tend to break down more quickly in the " +
 				"environment than synthetic pesticides, making them generally less persistent and " +
-				"less harmful to ecosystems and human health."))
+				"less harmful to ecosystems and human health.")
 			.AddInput(P("Product_Ethanol"), new Quantity(4))
 			.AddInput(P("Product_Biomass"), new Quantity(4))
 			.AddOutput(P("Product_Pesticide"), new Quantity(8))
